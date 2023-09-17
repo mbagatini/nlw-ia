@@ -1,10 +1,11 @@
 import { fastify } from 'fastify'
+import { promptRoutes } from './routes/prompts'
+import { videoRoutes } from './routes/videos'
 
 const app = fastify()
 
-app.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+app.register(promptRoutes)
+app.register(videoRoutes)
 
 app.listen({
 	port: 3333,
